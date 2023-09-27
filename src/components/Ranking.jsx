@@ -94,4 +94,4 @@ const Ranking = () => {
   );
 };
 
-export default transition(Ranking);
+export default transition(Ranking, "#5adbe4");

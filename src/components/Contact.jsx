@@ -14,4 +14,4 @@ const Contact = () => {
     </>
   );
 };
-export default transition(Contact);
+export default transition(Contact, "#b342ca");

@@ -14,4 +14,4 @@ const Home = () => {
   );
 };
 
-export default transition(Home);
+export default transition(Home, "#287aa0");

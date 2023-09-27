@@ -17,4 +17,4 @@ const About = () => {
   );
 };
 
-export default transition(About);
+export default transition(About, "#249729");
