@@ -2,6 +2,7 @@
     "name": "my-app-identificacao",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://Gabriel-maia-santos.github.io/Identificador",
     "dependencies": {
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
@@ -16,7 +17,6 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "homepage": "https://Gabriel-maia-santos.github.io/Identificador",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "build": "react-scripts build",
