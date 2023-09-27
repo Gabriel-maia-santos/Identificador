@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #0f0f0f0f;
+}
+
+html,
+body {
+    font-family: "Roslindale Display Condensed";
+    background: #c6d5c6;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.logo,
+.nav-item {
+    margin: 2em;
+    font-weight: 400;
+    font-size: 1.5vw;
+}
+
+h1 {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: 500;
+    font-size: 10vw;
+    line-height: 1;
+    text-transform: uppercase;
+    color: black;
+}
+
+h2 {
+    margin-top: 5%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 4vw;
+    line-height: 1;
+    text-transform: uppercase;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+    color: black;
+}
+
+th {
+    color: black;
+    font-size: 30px;
+    font-weight: 5px;
+}
+
+td {
+    color: black;
+    font-size: 20px;
+}
+
+tr {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.slide-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #287aa0;
+    transform-origin: bottom;
+}
+
+.slide-out {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #287aa0;
+    transform-origin: top;
+}
+
+.imagem {
+    max-width: 40vw;
+    border-radius: 30px;
+    box-shadow: 10px 10px 5px rgba(167, 167, 167, 0.534);
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff0c3;
+}
+
+.container_imagem2 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #92d8be;
+}
+
+.botao_pages {
+    display: block;
+    z-index: 2;
+    width: 3.65%;
+    /* 70px em relação a 1920px de largura */
+    left: 57.29%;
+    /* 1100px em relação a 1920px de largura */
+    height: 1.85%;
+    /* 20px em relação a 1080px de altura */
+    top: 66.5%;
+    /* 640px em relação a 1080px de altura */
+    position: absolute;
+    transform: rotate(-17deg);
+    /* background-color: white; */
+}
+
+.botao_pages2 {
+    display: block;
+    z-index: 2;
+    width: 1%;
+    /* 1100px em relação a 1920px de largura */
+    height: 1.85%;
+    /* 20px em relação a 1080px de altura */
+    /* 70px em relação a 1920px de largura */
+    left: 52.5%;
+    top: 84.5%;
+    /* 640px em relação a 1080px de altura */
+    position: absolute;
+    transform: rotate(-17deg);
+    /* background-color: white; */
+}
+
+.container_ranking {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(83, 13, 150);
+}
