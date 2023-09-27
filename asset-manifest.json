@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Identificador/static/css/main.a365faef.css",
-    "main.js": "/Identificador/static/js/main.d464521a.js",
+    "main.css": "/Identificador/static/css/main.b7fd8447.css",
+    "main.js": "/Identificador/static/js/main.7b561119.js",
     "static/js/787.8799ec8a.chunk.js": "/Identificador/static/js/787.8799ec8a.chunk.js",
     "static/media/4apples.png": "/Identificador/static/media/4apples.c632905f399435f09f5e.png",
     "static/media/teste2.jpg": "/Identificador/static/media/teste2.615a8a9476fed037f758.jpg",
     "index.html": "/Identificador/index.html",
-    "main.a365faef.css.map": "/Identificador/static/css/main.a365faef.css.map",
-    "main.d464521a.js.map": "/Identificador/static/js/main.d464521a.js.map",
+    "main.b7fd8447.css.map": "/Identificador/static/css/main.b7fd8447.css.map",
+    "main.7b561119.js.map": "/Identificador/static/js/main.7b561119.js.map",
     "787.8799ec8a.chunk.js.map": "/Identificador/static/js/787.8799ec8a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a365faef.css",
-    "static/js/main.d464521a.js"
+    "static/css/main.b7fd8447.css",
+    "static/js/main.7b561119.js"
   ]
 }
