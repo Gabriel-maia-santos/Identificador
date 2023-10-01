@@ -1,89 +1,66 @@
-import React from "react";
-import { useTable, useSortBy } from "react-table";
-import transition from "../transition";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ref as databaseRef, query, orderByChild, get } from "firebase/database";
+import { database } from "../firebase";
+import transition from "../transition";
 
 const Ranking = () => {
-  // Suponhamos que você tenha uma lista de jogadores com seus nomes e pontuações
-  const players = [
-    { name: "Jogador 1", score: 99 },
-    { name: "Jogador 2", score: 85 },
-    { name: "Jogador 3", score: 70 },
-    // Adicione mais jogadores conforme necessário
-  ];
+  const [usuarios, setUsuarios] = useState([]);
 
-  // Crie uma estrutura de dados para a tabela usando o react-table
-  const data = React.useMemo(() => players, []);
+  useEffect(() => {
+    // Carregue a lista de usuários do Firebase e ordene por pontuação crescente
+    const usuariosRef = databaseRef(database, "usuarios");
+    const usuariosQuery = query(usuariosRef, orderByChild("pontuacao"));
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Posição",
-        accessor: (row, index) => index + 1,
-      },
-      {
-        Header: "Nome do Jogador",
-        accessor: "name",
-      },
-      {
-        Header: "Pontuação",
-        accessor: "score",
-      },
-    ],
-    []
-  );
+    get(usuariosQuery).then((snapshot) => {
+      if (snapshot.exists()) {
+        // Transforme os dados do snapshot em um array de usuários
+        const usuariosArray = [];
+        snapshot.forEach((childSnapshot) => {
+          const usuario = childSnapshot.val();
+          usuariosArray.push(usuario);
+        });
+        // Defina os usuários no estado
+        setUsuarios(usuariosArray);
+      }
+    });
+  }, []);
 
-  // Use o react-table para criar a tabela e habilitar a classificação
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
+  // Defina as colunas da tabela
+  const columns = [
     {
-      columns,
-      data,
-      initialState: [{ id: "score", desc: true }], // Classifique inicialmente pela pontuação decrescente
+      Header: "Posição",
+      accessor: (row, index) => index + 1,
     },
-    useSortBy
-  );
+    {
+      Header: "Nome do Jogador",
+      accessor: "nome",
+    },
+    {
+      Header: "Tempo",
+      accessor: "pontuacao",
+    },
+  ];
 
   return (
     <div className="container_ranking">
       <h2>Classificação</h2>
-      <table className="ranking-table" {...getTableProps()}>
+      <table className="ranking-table">
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? " ▼"
-                        : " ▲"
-                      : ""}
-                  </span>
-                </th>
-              ))}
+          <tr>
+            {columns.map((column) => (
+              <th key={column.Header}>{column.Header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map((usuario, index) => (
+            <tr key={usuario.nome}>
+              <td>{index + 1}</td>
+              <td>{usuario.nome}</td>
+              <td>{usuario.pontuacao}</td>
             </tr>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
         </tbody>
       </table>
 
