@@ -13,17 +13,17 @@ function App() {
   const location = useLocation();
 
   return (
-    <>
-      {/* <Navbar /> */}
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route index element={<Home />} />{" "}
-          <Route path="/about" element={<About />} />{" "}
-          <Route path="/contact" element={<Contact />} />{" "}
-          <Route path="/ranking" element={<Ranking />} />{" "}
-        </Routes>{" "}
-      </AnimatePresence>{" "}
-    </>
+      <>
+        {/* <Navbar /> */}
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route index element={<Home />} />{" "}
+            <Route path="/about" element={<About />} />{" "}
+            <Route path="/contact" element={<Contact />} />{" "}
+            <Route path="/ranking" element={<Ranking />} />{" "}
+          </Routes>{" "}
+        </AnimatePresence>{" "}
+      </>
   );
 }
 

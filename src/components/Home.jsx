@@ -57,14 +57,15 @@ const Home = () => {
         {usuarioCadastrado ? (
           <p>Bem-vindo, {nome}!</p>
         ) : (
-          <div>
+          <div className="input_name">
+
+
             <input
-              type="text"
-              placeholder="Nome do usuário"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-            />
-            <button onClick={handleCadastroUsuario}>Cadastrar Usuário</button>
+              />
+
+            <button className="button_input" onClick={handleCadastroUsuario}>Cadastrar Usuário</button>
           </div>
         )}
       </div>

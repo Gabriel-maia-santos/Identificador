@@ -44,21 +44,21 @@ const Ranking = () => {
 
   return (
     <div className="container_ranking">
-      <h2>Classificação</h2>
+      <h2 style={{color: `white`}}>Classificação</h2>
       <table className="ranking-table">
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.Header}>{column.Header}</th>
+              <th style={{color: `white`}} key={column.Header}>{column.Header}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {usuarios.map((usuario, index) => (
             <tr key={usuario.nome}>
-              <td>{index + 1}</td>
-              <td>{usuario.nome}</td>
-              <td>{usuario.pontuacao}</td>
+              <td style={{color: `white`}}>{index + 1}</td>
+              <td style={{color: `white`}}>{usuario.nome}</td>
+              <td style={{color: `white`}}>{usuario.pontuacao}</td>
             </tr>
           ))}
         </tbody>
