@@ -50,7 +50,12 @@ const Jogo3 = () => {
 
       // Obtenha o nome do usuário do localStorage ou do Firebase
       const nomeUsuario = localStorage.getItem("nomeUsuario"); // ou de onde você o obtém
+      const jogou = localStorage.getItem("Jogou"); // ou de onde você o obtém
+      // Registre o momento em que o link foi clicado
 
+      if(jogou == "sim"){
+        return navigate("/ranking");
+      }
       // Certifique-se de que você tem um nome de usuário válido
       if (nomeUsuario) {
         // Obtenha a pontuação atual do usuário
@@ -91,6 +96,7 @@ const Jogo3 = () => {
                       // Redirecione o usuário para a próxima página aqui, se necessário
                       // navigate("/ranking");
                       setPontuacao(1);
+                      localStorage.setItem("Jogou", 'sim');
                     });
                   })
                   .catch((error) => {
@@ -127,11 +133,11 @@ const Jogo3 = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container3">
         <div className="container_imagem_padrao">
           {pontuacao === 0 ? (
             <>
-              <p style={{ color: "black", margin: '30px' }}>Encontre quantas pessoas tem na imagem a seguir:</p>
+              <p style={{ color: "black", margin: '30px' }}>Encontre quantas pessoas estão de verde tem na imagem a seguir:</p>
               <img className="imagem" src={imagem} alt="imagem" />
               <div className="grid-botoes">
                 {buttons.map((button) => (
@@ -162,4 +168,4 @@ const Jogo3 = () => {
   );
 };
 
-export default transition(Jogo3, "#b342ca");
+export default transition(Jogo3, "#42caa8");

@@ -29,7 +29,13 @@ const About = () => {
 
   const handleCliqueNoLink = () => {
     if (tempoCarregamento) {
+      const nomeUsuario = localStorage.getItem("nomeUsuario"); // ou de onde você o obtém
+      const jogou = localStorage.getItem("Jogou"); // ou de onde você o obtém
       // Registre o momento em que o link foi clicado
+
+      if(jogou == "sim"){
+        return navigate("/contact");
+      }
       const tempoClique = new Date().getTime();
 
       // Calcule o tempo decorrido em milissegundos
@@ -40,7 +46,6 @@ const About = () => {
 
       setTempo(tempoDecorridoSegundos)
       // Obtenha o nome do usuário do localStorage ou do Firebase
-      const nomeUsuario = localStorage.getItem("nomeUsuario"); // ou de onde você o obtém
 
       // Certifique-se de que você tem um nome de usuário válido
       if (nomeUsuario) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ref as databaseRef, query, orderByChild, get } from "firebase/database";
+import { ref as databaseRef, query, orderByChild, get, equalTo } from "firebase/database";
 import { database } from "../firebase";
 import transition from "../transition";
 
@@ -20,8 +20,12 @@ const Ranking = () => {
           const usuario = childSnapshot.val();
           usuariosArray.push(usuario);
         });
+
+        // Filtrar os usuários para excluir aqueles cuja pontuação termina com 0
+        const usuariosFiltrados = usuariosArray.filter((usuario) => usuario.pontuacao % 10 !== 0);
+
         // Defina os usuários no estado
-        setUsuarios(usuariosArray);
+        setUsuarios(usuariosFiltrados);
       }
     });
   }, []);
@@ -44,21 +48,23 @@ const Ranking = () => {
 
   return (
     <div className="container_ranking">
-      <h2 style={{color: `white`}}>Classificação</h2>
+      <h2 style={{ color: `white` }}>Classificação</h2>
       <table className="ranking-table">
         <thead>
           <tr>
             {columns.map((column) => (
-              <th style={{color: `white`}} key={column.Header}>{column.Header}</th>
+              <th style={{ color: `white` }} key={column.Header}>
+                {column.Header}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {usuarios.map((usuario, index) => (
             <tr key={usuario.nome}>
-              <td style={{color: `white`}}>{index + 1}</td>
-              <td style={{color: `white`}}>{usuario.nome}</td>
-              <td style={{color: `white`}}>{usuario.pontuacao}</td>
+              <td style={{ color: `white` }}>{index + 1}</td>
+              <td style={{ color: `white` }}>{usuario.nome}</td>
+              <td style={{ color: `white` }}>{usuario.pontuacao}</td>
             </tr>
           ))}
         </tbody>

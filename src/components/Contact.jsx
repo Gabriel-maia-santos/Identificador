@@ -40,7 +40,12 @@ const Contact = () => {
 
       // Obtenha o nome do usuário do localStorage ou do Firebase
       const nomeUsuario = localStorage.getItem("nomeUsuario"); // ou de onde você o obtém
+      const jogou = localStorage.getItem("Jogou"); // ou de onde você o obtém
+      // Registre o momento em que o link foi clicado
 
+      if(jogou == "sim"){
+        return navigate("/Jogo3");
+      }
       // Certifique-se de que você tem um nome de usuário válido
       if (nomeUsuario) {
         // Obtenha a pontuação atual do usuário
@@ -115,7 +120,7 @@ const Contact = () => {
             <p style={{color: "black", margin: '30px'}}>Encontre um livro vermelho na imagem a seguir</p>
           <img className="imagem" src={imagem} alt="imagem" />
           <button className="botao_pages2" onClick={handleCliqueNoLink}>
-            Clique aqui
+         
           </button>
             
             </>
