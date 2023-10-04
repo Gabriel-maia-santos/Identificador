@@ -137,7 +137,7 @@ const Jogo3 = () => {
         <div className="container_imagem_padrao">
           {pontuacao === 0 ? (
             <>
-              <p style={{ color: "black", margin: '30px' }}>Encontre quantas pessoas estão de verde tem na imagem a seguir:</p>
+              <p style={{ color: "black", margin: '30px' }}>Encontre quantas pessoas estão de verde na imagem a seguir:</p>
               <img className="imagem" src={imagem} alt="imagem" />
               <div className="grid-botoes">
                 {buttons.map((button) => (
