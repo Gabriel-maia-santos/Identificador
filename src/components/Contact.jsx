@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import transition from "../transition";
-import imagem from "../assets/images/4apples.png";
+import imagem from "../assets/images/livro.png";
+import imagemResposta from "../assets/images/respostalivro.png";
+import Swal from 'sweetalert2';
 import { Link, useNavigate } from "react-router-dom";
 import {
   ref as databaseRef,
@@ -14,6 +16,9 @@ import { database } from "../firebase";
 
 const Contact = () => {
   const [tempoCarregamento, setTempoCarregamento] = useState(null);
+  const [pontuacao, setPontuacao] = useState(0);
+  const [tempo, setTempo] = useState(0);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +65,8 @@ const Contact = () => {
                 let valorTotal = pontuacaoAtual + tempoDecorridoSegundos;
 
                 console.log(tempoDecorridoSegundos)
+
+                setTempo(tempoDecorridoSegundos)
                 console.log(valorTotal)
 
                 // Atualize a pontuação no Firebase
@@ -69,11 +76,16 @@ const Contact = () => {
 
                 update(databaseRef(database), atualizacao)
                   .then(() => {
-                    alert(
-                      `Tempo registrado com sucesso! Sua nova pontuação é ${valorTotal}.`
-                    );
-                    // Redirecione o usuário para a próxima página
-                    navigate("/ranking");
+                    Swal.fire({
+                      title: 'Sucesso!',
+                      text: `Tempo registrado com sucesso! Sua nova pontuação é de ${valorTotal}.`,
+                      icon: 'success',
+                      confirmButtonText: 'OK',
+                    }).then(() => {
+                      // Redirecione o usuário para a próxima página aqui, se necessário
+                      // navigate("/ranking");
+                      setPontuacao(1);
+                    });
                   })
                   .catch((error) => {
                     console.error("Erro ao registrar tempo: ", error);
@@ -98,10 +110,24 @@ const Contact = () => {
     <>
       <div className="container">
         <div className="container_imagem_padrao">
+          {pontuacao == 0 ? (
+            <>
+            <p style={{color: "black", margin: '30px'}}>Encontre um livro vermelho na imagem a seguir</p>
           <img className="imagem" src={imagem} alt="imagem" />
           <button className="botao_pages2" onClick={handleCliqueNoLink}>
             Clique aqui
           </button>
+            
+            </>
+          ) : (<>
+            <img className="imagem" src={imagemResposta} alt="imagem" />
+            <p style={{color: "black", marginTop: '30px'}}>Tempo que o Tensorflow demorou para identificar o objeto: 0.23 segundos</p>
+            <p style={{color: "black"}}>Seu tempo foi de {tempo} segundos</p>
+            <Link to="/Jogo3">
+              Próxima página
+            </Link>
+              
+              </>)}
         </div>
       </div>
     </>

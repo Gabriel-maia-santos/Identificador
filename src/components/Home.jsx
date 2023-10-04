@@ -55,7 +55,9 @@ const Home = () => {
     <>
       <div>
         {usuarioCadastrado ? (
-          <p>Bem-vindo, {nome}!</p>
+          <div className="alinhar">
+            <p className="welcome">Bem-vindo, {nome}!</p>
+          </div>
         ) : (
           <div className="input_name">
 
@@ -72,7 +74,7 @@ const Home = () => {
       <div>
         {usuarioCadastrado && (
           <Link to="/about">
-            <h1>Jogo</h1>
+            <h1>START</h1>
           </Link>
         )}
       </div>

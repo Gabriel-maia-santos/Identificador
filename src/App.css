@@ -131,14 +131,14 @@ tr {
 
 .botao_pages {
     position: absolute;
-    width: 12.5%;
-    height: 1.85%;
+    width: 6%;
+    height: 7%;
     /* Posição absoluta em relação ao contêiner pai */
-    top: 71.8%;
+    top: 73%;
     /* Ajuste a parte superior para centrar verticalmente o botão */
-    left: 68.6%;
+    left: 87%;
     /* Ajuste a esquerda para centrar horizontalmente o botão */
-    transform: rotate(-17deg);
+    transform: rotate(0deg);
     /* Centralizar o botão completamente */
     padding: 10px 20px;
     /* Adicionar preenchimento ao botão para torná-lo clicável */
@@ -153,16 +153,16 @@ tr {
 }
 
 .botao_pages2 {
-    width: 2%;
+    width: 0.8%;
     /* 1100px em relação a 1920px de largura */
-    height: 1.9%;
+    height: 17%;
     /* 20px em relação a 1080px de altura */
     /* 70px em relação a 1920px de largura */
-    left: 56.6%;
-    top: 93%;
+    left: 71.8%;
+    top: 45%;
     /* 640px em relação a 1080px de altura */
     position: absolute;
-    transform: rotate(-17deg);
+    transform: rotate(0deg);
     background-color: #007bff00;
     border: none;
     cursor: pointer;
@@ -241,3 +241,74 @@ input:focus {
     padding: 15px;
     border-radius: 15px;
 }
+
+.welcome {
+    width: 100%;
+    font-size: 25px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.alinhar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* Estilos para o container dos botões */
+
+.container_imagem_padrao {
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* Estilos para os botões */
+
+.bottoes {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* Estilos para botões desativados (com "X") */
+
+.bottoes[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Estilos para a divisão de linhas */
+
+.container_imagem_padrao .linha-botoes {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Estilos para a divisão de colunas */
+
+.container_imagem_padrao .coluna-botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Estilos adicionais conforme necessário */

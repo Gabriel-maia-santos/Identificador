@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import transition from "../transition";
-import imagem from "../assets/images/teste2.jpg";
+import imagem from "../assets/images/carros.png";
+import imagemResposta from "../assets/images/resposta.png";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import {
   ref as databaseRef,
   push,
@@ -15,6 +17,8 @@ import { database } from "../firebase";
 
 const About = () => {
   const [tempoCarregamento, setTempoCarregamento] = useState(null);
+  const [pontuacao, setPontuacao] = useState(0);
+  const [tempo, setTempo] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +38,7 @@ const About = () => {
       // Converta o tempo decorrido para segundos
       const tempoDecorridoSegundos = Math.round(tempoDecorrido / 1000);
 
+      setTempo(tempoDecorridoSegundos)
       // Obtenha o nome do usuário do localStorage ou do Firebase
       const nomeUsuario = localStorage.getItem("nomeUsuario"); // ou de onde você o obtém
 
@@ -62,11 +67,16 @@ const About = () => {
 
             update(databaseRef(database), atualizacao)
               .then(() => {
-                alert(
-                  `Tempo registrado com sucesso! Sua pontuação é agora ${novaPontuacao}.`
-                );
-                // Redirecione o usuário para a próxima página
-                navigate("/contact");
+                Swal.fire({
+                  title: 'Sucesso!',
+                  text: `Tempo registrado com sucesso! Sua nova pontuação é de ${novaPontuacao} segundos.`,
+                  icon: 'success',
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  // Redirecione o usuário para a próxima página aqui, se necessário
+                  // navigate("/ranking");
+                  setPontuacao(1);
+                });
               })
               .catch((error) => {
                 console.error("Erro ao registrar tempo: ", error);
@@ -87,8 +97,24 @@ const About = () => {
     <>
       <div className="container_imagem2">
         <div className="container_imagem_padrao">
+        {pontuacao == 0 ? (
+            <>
+            <p style={{color: `black`, margin: `30px`, display: `flex`, flexDirection: `row`, justifyContent: `center`}}>Encontre um carro nesta imagem</p>
           <img className="imagem" src={imagem} alt="imagem" />
-          <button className="botao_pages" onClick={handleCliqueNoLink}></button>
+          <button className="botao_pages" onClick={handleCliqueNoLink}>
+          </button>
+            
+            </>
+          ) : (<>
+            <img className="imagem" src={imagemResposta} alt="imagem" />
+            <p style={{color: "black", marginTop: '30px'}}>Tempo que o Tensorflow demorou para identificar o objeto: 0.23 segundos</p>
+            <p style={{color: "black"}}>Seu tempo foi de {tempo} segundos</p>
+            <Link to="/contact">
+              Próxima página
+            </Link>
+              
+              
+              </>)}
         </div>
       </div>
     </>
